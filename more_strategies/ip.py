@@ -1,16 +1,13 @@
-from ipaddress import ip_address
+import ipaddress
 
 from hypothesis import strategies as st
 from hypothesis import strategy
 
 
-def to_ip(args):
-    ip = '.'.join([str(p) for p in args])
-    return ip_address(ip)
+def to_ip(un32):
+    return ipaddress.ip_address(un32)
 
 
 def IP():
-    part = st.integers(min_value=0, max_value=255)
-    ipst = strategy(st.lists(part, min_size=4, max_size=4))
-
+    ipst = strategy(st.integers(min_value=0, max_value=int(0xffffffff)))
     return ipst.map(to_ip)
