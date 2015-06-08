@@ -4,7 +4,7 @@ import sys
 
 
 HERE = os.path.abspath(os.path.dirname(__file__))
-README_PATH = os.path.join(HERE, 'README')
+README_PATH = os.path.join(HERE, 'README.md')
 CHANGELOG_PATH = os.path.join(HERE, 'CHANGELOG')
 
 if sys.version_info.major == 3 and sys.version_info.minor == 4:
@@ -25,5 +25,7 @@ setup(
     packages=find_packages('more_strategies', exclude=["tests", "docs"]),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[],
+    install_requires=[
+        "hypothesis==1.6.1",
+    ],
 )
