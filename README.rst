@@ -25,3 +25,16 @@ And of course:
     @given(url=URL())
     def test_true(url):
         assert True
+
+
+IP
+--
+
+Generates IPv4 only.
+
+.. code-block:: python
+
+    >>> from from more_strategies import IP
+    
+    >>> IP().example()
+    IPv4Address('82.247.101.60')
