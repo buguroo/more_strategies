@@ -21,8 +21,8 @@ def to_url(kwargs):
         domain='.'.join(kwargs["domain"]) + '.' + kwargs["tld"],
         port=':%s' % str(port) if port is not None else "")
 
-    return parse.urlunparse(
-        (kwargs['scheme'], netloc, url, params, query, fragment))
+    return parse.urlparse(parse.urlunparse(
+        (kwargs['scheme'], netloc, url, params, query, fragment)))
 
 
 def URL(userpass=False, port=False, url=False, query=False, fragment=False):
