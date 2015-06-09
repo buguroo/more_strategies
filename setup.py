@@ -4,7 +4,7 @@ import sys
 
 
 HERE = os.path.abspath(os.path.dirname(__file__))
-README_PATH = os.path.join(HERE, 'README.md')
+README_PATH = os.path.join(HERE, 'README.rst')
 CHANGELOG_PATH = os.path.join(HERE, 'CHANGELOG')
 
 if sys.version_info.major == 3 and sys.version_info.minor == 4:
