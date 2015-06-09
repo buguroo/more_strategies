@@ -25,7 +25,7 @@ def to_url(kwargs):
         (kwargs['scheme'], netloc, url, params, query, fragment)))
 
 
-def URL(userpass=False, port=False, url=False, query=False, fragment=False):
+def url(userpass=False, port=False, url=False, query=False, fragment=False):
 
     d = {'scheme': st.text(alphabet=ascii_lowercase+digits, min_size=2),
          'domain': st.lists(st.text(alphabet=ascii_lowercase + digits,
