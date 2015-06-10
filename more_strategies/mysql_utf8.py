@@ -11,8 +11,8 @@ class MySQLOneCharStringStrategy(OneCharStringStrategy):
     def simplifiers(self, random, template):
         def filter_bad_chars(fn):
             @wraps(fn)
-            def wrapper(random, template):
-                return (c for c in fn(random, template) if self.is_good(c))
+            def wrapper(*args, **kwargs):
+                return (c for c in fn(*args, **kwargs) if self.is_good(c))
             return filter_bad_chars
 
         return (filter_bad_chars(simplifiers)
