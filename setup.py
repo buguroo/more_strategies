@@ -16,7 +16,7 @@ else:
 
 setup(
     name='more_strategies',
-    version='0.0.1rc1',
+    version='0.0.1rc2',
     description='Util strategies for hypothesis.',
     long_description=README + '\n\n' + CHANGELOG,
     keywords='strategies, hypothesis',
@@ -25,7 +25,5 @@ setup(
     packages=find_packages('more_strategies', exclude=["tests", "docs"]),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-        "hypothesis==1.6.1",
-    ],
+    install_requires=[],
 )
