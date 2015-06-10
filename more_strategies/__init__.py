@@ -1,3 +1,3 @@
-from .url import URL
-from .ip import IP
-from .mysql_utf8 import MySQL_UTF8
+from .url import url
+from .ip import ip
+from .mysql_utf8 import mysql_utf8

@@ -15,14 +15,16 @@ else:
 
 
 setup(
-    name='more_strategies',
-    version='0.0.1rc2',
+    name='more-strategies',
+    version='0.0.1rc3',
     description='Util strategies for hypothesis.',
     long_description=README + '\n\n' + CHANGELOG,
-    keywords='strategies, hypothesis',
+    keywords='strategies hypothesis',
     author='Samuel Herrero',
+    license='LGPLv3',
     author_email='sherrero@buguroo.com',
-    packages=find_packages('more_strategies', exclude=["tests", "docs"]),
+    url='https://github.com/buguroo/more_strategies',
+    packages=find_packages(exclude=["tests", "docs"]),
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
