@@ -35,9 +35,14 @@ def url(schemes=[], userpass=False, port=False, url=False, query=False,
         scheme = st.text(alphabet=ascii_lowercase+digits, min_size=2)
 
     d = {'scheme': scheme,
-         'domain': st.lists(st.text(alphabet=ascii_lowercase + digits,
-                                    min_size=1), min_size=1),
-         'tld': st.text(alphabet=ascii_lowercase, min_size=2)}
+         'domain': st.lists(
+             st.text(
+                 alphabet=ascii_lowercase + digits,
+                 min_size=1,
+                 max_size=63),
+             min_size=1,
+             max_size=3),
+         'tld': st.text(alphabet=ascii_lowercase, min_size=2, max_size=63)}
 
     if userpass:
         d['user'] = st.text(alphabet=ascii_lowercase + digits)
