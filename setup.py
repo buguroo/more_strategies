@@ -16,7 +16,7 @@ else:
 
 setup(
     name='more-strategies',
-    version='0.0.1rc5',
+    version='0.0.1rc9',
     description='Util strategies for hypothesis.',
     long_description=README + '\n\n' + CHANGELOG,
     keywords='strategies hypothesis',

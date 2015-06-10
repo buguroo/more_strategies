@@ -15,7 +15,7 @@ class MySQLOneCharStringStrategy(OneCharStringStrategy):
                 return (c for c in fn(random, template) if self.is_good(c))
             return filter_bad_chars
 
-        return (filter_bad_chars(s)
+        return (filter_bad_chars(simplifiers)
                 for simplifiers in
                 super().simplifiers(random, template))
 
