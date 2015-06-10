@@ -1,3 +1,5 @@
+import unicodedata
+
 from hypothesis import strategies as st
 from hypothesis import strategy
 from hypothesis.searchstrategy.strings import OneCharStringStrategy
@@ -6,7 +8,17 @@ from hypothesis.searchstrategy.strings import OneCharStringStrategy
 class MySQLOneCharStringStrategy(OneCharStringStrategy):
 
     def is_good(self, char):
-        return super().is_good(char) and len(char.encode('utf-8')) <= 3
+        try:
+            encoded = char.encode('utf-8')
+        except UnicodeEncodeError:
+            can_encode = False
+            encoded = b''
+        else:
+            can_encode = True
+        finally:
+            is_surrogate = unicodedata.category(char) == 'Cs'
+
+        return can_encode and len(encoded) <= 3 and not is_surrogate
 
 
 def mysql_utf8(min_size=None, average_size=None, max_size=None):
