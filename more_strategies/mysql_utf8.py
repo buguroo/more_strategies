@@ -7,6 +7,11 @@ from hypothesis.searchstrategy.strings import OneCharStringStrategy
 
 class MySQLOneCharStringStrategy(OneCharStringStrategy):
 
+    def try_ascii(self, random, template):
+        return (c
+                for c in super().try_ascii(random, template)
+                if self.is_good(c))
+
     def is_good(self, char):
         try:
             encoded = char.encode('utf-8')
