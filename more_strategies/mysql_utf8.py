@@ -3,14 +3,21 @@ import unicodedata
 from hypothesis import strategies as st
 from hypothesis import strategy
 from hypothesis.searchstrategy.strings import OneCharStringStrategy
+from functools import wraps
 
 
 class MySQLOneCharStringStrategy(OneCharStringStrategy):
 
-    def try_ascii(self, random, template):
-        return (c
-                for c in super().try_ascii(random, template)
-                if self.is_good(c))
+    def simplifiers(self, random, template):
+        def filter_bad_chars(fn):
+            @wraps(fn)
+            def wrapper(random, template):
+                return (c for c in fn(random, template) if self.is_good(c))
+            return filter_bad_chars
+
+        return (filter_bad_chars(s)
+                for simplifiers in
+                super().simplifiers(random, template))
 
     def is_good(self, char):
         try:
