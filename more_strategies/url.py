@@ -1,5 +1,6 @@
 from string import ascii_lowercase, digits
 from urllib import parse
+import random
 
 from hypothesis import strategies as st
 from hypothesis import strategy
@@ -25,9 +26,15 @@ def to_url(kwargs):
         (kwargs['scheme'], netloc, url, params, query, fragment)))
 
 
-def url(userpass=False, port=False, url=False, query=False, fragment=False):
+def url(schemes=[], userpass=False, port=False, url=False, query=False,
+        fragment=False):
 
-    d = {'scheme': st.text(alphabet=ascii_lowercase+digits, min_size=2),
+    if schemes:
+        scheme = st.just(random.choice(schemes))
+    else:
+        scheme = st.text(alphabet=ascii_lowercase+digits, min_size=2)
+
+    d = {'scheme': scheme,
          'domain': st.lists(st.text(alphabet=ascii_lowercase + digits,
                                     min_size=1), min_size=1),
          'tld': st.text(alphabet=ascii_lowercase, min_size=2)}
