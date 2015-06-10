@@ -13,7 +13,7 @@ class MySQLOneCharStringStrategy(OneCharStringStrategy):
             @wraps(fn)
             def wrapper(*args, **kwargs):
                 return (c for c in fn(*args, **kwargs) if self.is_good(c))
-            return filter_bad_chars
+            return wrapper
 
         return (filter_bad_chars(simplifiers)
                 for simplifiers in
