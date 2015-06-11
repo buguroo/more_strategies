@@ -5,6 +5,8 @@ import random
 from hypothesis import strategies as st
 from hypothesis import strategy
 
+MAX_URL_LEN = 2000
+
 
 def to_url(kwargs):
     user = kwargs.get("user", "")
@@ -24,6 +26,11 @@ def to_url(kwargs):
 
     return parse.urlparse(parse.urlunparse(
         (kwargs['scheme'], netloc, url, params, query, fragment)))
+
+
+def max_len(parse_result):
+    if len(parse_result.geturl()) <= MAX_URL_LEN:
+        return parse_result
 
 
 def url(schemes=[], userpass=False, port=False, url=False, query=False,
@@ -60,4 +67,4 @@ def url(schemes=[], userpass=False, port=False, url=False, query=False,
 
     urlst = strategy(st.fixed_dictionaries(d))
 
-    return urlst.map(to_url)
+    return urlst.map(to_url).filter(max_len)
