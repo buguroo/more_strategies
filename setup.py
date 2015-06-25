@@ -27,5 +27,5 @@ setup(
     packages=find_packages(exclude=["tests", "docs"]),
     include_package_data=True,
     zip_safe=False,
-    install_requires=['hypothesis>1.5.0'],
+    install_requires=['hypothesis>=1.6.2'],
 )
