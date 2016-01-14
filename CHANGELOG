@@ -1,2 +1,12 @@
 CHANGELOG
 =========
+
+
+v1.0.0
+------
+
+* Estrategias de hypothesis para generar:
+
+    - URLs
+    - IPs
+    - MySQL utf-8

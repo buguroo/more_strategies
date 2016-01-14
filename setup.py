@@ -4,7 +4,7 @@ import sys
 
 
 HERE = os.path.abspath(os.path.dirname(__file__))
-README_PATH = os.path.join(HERE, 'README')
+README_PATH = os.path.join(HERE, 'README.rst')
 CHANGELOG_PATH = os.path.join(HERE, 'CHANGELOG')
 
 if sys.version_info.major == 3 and sys.version_info.minor == 4:
@@ -15,15 +15,17 @@ else:
 
 
 setup(
-    name='more_strategies',
-    version='0.0.1',
+    name='more-strategies',
+    version='1.0.0',
     description='Util strategies for hypothesis.',
     long_description=README + '\n\n' + CHANGELOG,
-    keywords='strategies, hypothesis',
+    keywords='strategies hypothesis',
     author='Samuel Herrero',
+    license='LGPLv3',
     author_email='sherrero@buguroo.com',
-    packages=find_packages('more_strategies', exclude=["tests", "docs"]),
+    url='https://github.com/buguroo/more_strategies',
+    packages=find_packages(exclude=["tests", "docs"]),
     include_package_data=True,
     zip_safe=False,
-    install_requires=[],
+    install_requires=['hypothesis==1.6.2'],
 )
